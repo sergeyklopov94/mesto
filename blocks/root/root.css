@@ -1,0 +1,26 @@
+.root {
+  background-color: #000;
+  color: #fff;
+  max-width: 1280px;
+  min-width: 320px;
+  min-height: 100vh;
+  font-weight: 400;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  padding: 45px 200px 60px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+}
+
+@media screen and (max-width: 544px) {
+  .root {
+    padding-top: 28px;
+    padding-bottom: 36px;
+    padding-left: 19px;
+    padding-right: 19px;
+  }
+}
