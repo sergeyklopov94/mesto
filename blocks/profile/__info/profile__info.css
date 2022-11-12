@@ -7,3 +7,13 @@
   align-items: center;
   gap: 16px 18px;
 }
+
+@media screen and (max-width: 896px) {
+  .profile__info {
+    flex-direction: column;
+    margin-top: 26px;
+    margin-left: 0;
+    margin-bottom: 36px;
+    gap: 14px 10px;
+  }
+}

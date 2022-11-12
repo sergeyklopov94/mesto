@@ -2,6 +2,21 @@
   width: 100%;
   font-weight: 400;
   font-size: 18px;
-  line-height: 21.78px;
+  line-height: 22px;
   margin: 0;
+}
+
+@media screen and (max-width: 1152px) {
+  .profile__description {
+    font-size: 16px;
+    line-height: 20px;
+  }
+}
+
+@media screen and (max-width: 896px) {
+  .profile__description {
+    font-size: 14px;
+    line-height: 17px;
+    text-align: center;
+  }
 }

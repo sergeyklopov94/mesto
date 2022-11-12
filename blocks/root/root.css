@@ -16,6 +16,13 @@
   -moz-text-size-adjust: 100%;
 }
 
+@media screen and (max-width: 1152px) {
+  .root {
+    padding-left: 150px;
+    padding-right: 150px;
+  }
+}
+
 @media screen and (max-width: 896px) {
   .root {
     padding-top: 36px;
