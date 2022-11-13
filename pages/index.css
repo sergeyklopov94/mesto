@@ -17,3 +17,12 @@
 
 @import url("../blocks/edit-button/edit-button.css");
 @import url("../blocks/add-button/add-button.css");
+
+@import url("../blocks/elements/elements.css");
+@import url("../blocks/elements-container/elements-container.css");
+@import url("../blocks/element/element.css");
+@import url("../blocks/element/__image/element__image.css");
+@import url("../blocks/element/__info/element__info.css");
+@import url("../blocks/element/__name/element__name.css");
+@import url("../blocks/element/__like-button/element__like-button.css");
+@import url("../blocks/element/__like-button/_active/element__like-button_active.css");

@@ -1,0 +1,10 @@
+.element__like-button {
+  width: 22px;
+  height: 19px;
+  padding: 0;
+  margin-left: 30px;
+  border: none;
+  background-color: #fff;
+  background-image: url(../../../images/profile-like.svg);
+  flex-shrink: 0;
+}
