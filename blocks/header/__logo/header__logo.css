@@ -3,6 +3,7 @@
   height: 33px;
   margin: 0;
   object-fit: contain;
+  transition: 1s ease;
 }
 
 @media screen and (max-width: 896px) {
