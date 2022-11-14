@@ -23,3 +23,7 @@
     background-size: 7.5px 7.5px;
   }
 }
+
+.edit-button:hover {
+  opacity: .6;
+}

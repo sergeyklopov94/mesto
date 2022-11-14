@@ -17,3 +17,7 @@
     background-size: 16px 16px;
   }
 }
+
+.add-button:hover {
+  opacity: .6;
+}
