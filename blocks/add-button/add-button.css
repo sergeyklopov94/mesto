@@ -7,10 +7,13 @@
   background-repeat: no-repeat;
   background-position: 50%;
   flex-shrink: 0;
+  padding: 0;
+  background-size: 22px 22px;
 }
 
 @media screen and (max-width: 710px) {
   .add-button {
     width: 100%;
+    background-size: 16px 16px;
   }
 }
