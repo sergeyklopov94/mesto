@@ -12,6 +12,7 @@
   flex-shrink: 0;
   padding: 0;
   background-size: 10px 10px;
+  transition: .4s ease;
 }
 
 @media screen and (max-width: 710px) {

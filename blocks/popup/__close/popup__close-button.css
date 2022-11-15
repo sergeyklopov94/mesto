@@ -6,7 +6,7 @@
   height: 32px;
   background: url("../../../images/popup-close-icon.svg");
   border: none;
-  transition: 1s ease;
+  transition: .4s ease;
   background-size: cover;
 }
 
