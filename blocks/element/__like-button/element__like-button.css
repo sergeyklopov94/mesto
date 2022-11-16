@@ -8,6 +8,7 @@
   background-image: url(../../../images/profile-like.svg);
   flex-shrink: 0;
   transition: .4s ease;
+  cursor: pointer;
 }
 
 .element__like-button:hover {

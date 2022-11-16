@@ -1,5 +1,5 @@
 .profile__edit-name {
   display: flex;
-  align-items: flex-start;
-  box-sizing: border-box;
+  align-items: flex-end;
+  text-align: left;
 }

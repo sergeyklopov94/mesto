@@ -3,6 +3,8 @@
   color: #fff;
   display: flex;
   align-items: center;
+  max-width: 880px;
+  min-width: 0;
 }
 
 @media screen and (max-width: 710px) {

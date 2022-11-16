@@ -9,6 +9,7 @@
   padding: 0;
   border: none;
   transition: .4s ease;
+  cursor: pointer;
 }
 
 @media screen and (max-width: 416px) {
