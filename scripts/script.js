@@ -67,4 +67,7 @@ initialCards.forEach(element => {
   cardElement.querySelector('.element__image').src = element.link;
   cardElement.querySelector('.element__name').textContent = element.name;
   elementsContainer.append(cardElement);
+  cardElement.querySelector('.element__like-button').addEventListener('click', function (evt) {
+    evt.target.classList.toggle('element__like-button_active');
+  });
 });
