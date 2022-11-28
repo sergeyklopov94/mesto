@@ -26,7 +26,7 @@
 
 **GitHub**
 
-* [Ссылка на проект]
+* [Ссылка на проект](https://sergeyklopov94.github.io/mesto/)
 
 **Картинки**
 

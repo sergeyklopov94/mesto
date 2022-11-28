@@ -8,6 +8,7 @@
   border: none;
   transition: .4s ease;
   background-size: cover;
+  cursor: pointer;
 }
 
 @media screen and (max-width: 525px) {

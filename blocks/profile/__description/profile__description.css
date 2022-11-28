@@ -1,10 +1,12 @@
 .profile__description {
-  width: 100%;
   font-weight: 400;
   font-size: 18px;
   line-height: 22px;
   margin: 0;
   transition: 1s ease;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 @media screen and (max-width: 710px) {
