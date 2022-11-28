@@ -26,11 +26,11 @@
         <ul class="elements-container">
           <template id="card-template">
             <li class="element">
-              <button class="element__delete-button"></button>
-              <img class="element__image" src="#" alt="Изображение карточки">
+              <button class="element__delete-button" type="button"></button>
+              <img class="element__image">
               <div class="element__info">
                 <h2 class="element__name"></h2>
-                <button class="element__like-button"></button>
+                <button class="element__like-button" type="button"></button>
               </div>
             </li>
           </template>
@@ -40,7 +40,7 @@
     <footer class="footer">
       <p class="footer__copyright">© 2022. Mesto Russia</p>
     </footer>
-    <section class="popup">
+    <section class="popup popup_edit-profile">
       <div class="popup__container">
         <button class="popup__close-button" type="button"></button>
         <h3 class="popup__title">Редактировать профиль</h3>
@@ -51,14 +51,14 @@
         </form>
       </div>
     </section>
-    <section class="popup">
+    <section class="popup popup_add-cards">
       <div class="popup__container">
-        <button class="popup__close-button"></button>
+        <button class="popup__close-button" type="button"></button>
+        <h3 class="popup__title">Новое место</h3>
         <form class="popup__content">
-          <h3 class="popup__title">Новое Место</h3>
           <input class="popup__info" type="text" placeholder="Название" id="appellation" name="appelation">
           <input class="popup__info" type="text" placeholder="Ссылка на картинку" id="link" name="link">
-          <button class="popup__save-button">Создать</button>
+          <button class="popup__save-button" type="submit">Создать</button>
         </form>
       </div>
     </section>
