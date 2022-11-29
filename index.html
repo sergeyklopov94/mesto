@@ -24,55 +24,23 @@
       </section>
       <section class="elements">
         <ul class="elements-container">
-          <li class="element">
-            <img class="element__image" src="./images/element-church.jpg" alt="Изображение старой каменной постройки на фоне гор">
-            <div class="element__info">
-              <h2 class="element__name">Карачаевск</h2>
-              <button class="element__like-button" type="button"></button>
-            </div>
-          </li>
-          <li class="element">
-            <img class="element__image" src="./images/element-field.jpg" alt="Изображение горной вершины на фоне заката">
-            <div class="element__info">
-              <h2 class="element__name">Гора Эльбрус</h2>
-              <button class="element__like-button" type="button"></button>
-            </div>
-          </li>
-          <li class="element">
-            <img class="element__image" src="./images/element-mountain.jpg" alt="Изображение заснеженной горы на фоне леса">
-            <div class="element__info">
-              <h2 class="element__name">Домбай</h2>
-              <button class="element__like-button" type="button"></button>
-            </div>
-          </li>
-          <li class="element">
-            <img class="element__image" src="./images/element-field.jpg" alt="Изображение горной вершины на фоне заката">
-            <div class="element__info">
-              <h2 class="element__name">Гора Эльбрус</h2>
-              <button class="element__like-button" type="button"></button>
-            </div>
-          </li>
-          <li class="element">
-            <img class="element__image" src="./images/element-mountain.jpg" alt="Изображение заснеженной горы на фоне леса">
-            <div class="element__info">
-              <h2 class="element__name">Домбай</h2>
-              <button class="element__like-button" type="button"></button>
-            </div>
-          </li>
-          <li class="element">
-            <img class="element__image" src="./images/element-church.jpg" alt="Изображение старой каменной постройки на фоне гор">
-            <div class="element__info">
-              <h2 class="element__name">Карачаево-Черкесская Республика</h2>
-              <button class="element__like-button" type="button"></button>
-            </div>
-          </li>
+          <template id="card-template">
+            <li class="element">
+              <button class="element__delete-button" type="button"></button>
+              <img class="element__image" src="#" alt="Изображение места">
+              <div class="element__info">
+                <h2 class="element__name"></h2>
+                <button class="element__like-button" type="button"></button>
+              </div>
+            </li>
+          </template>
         </ul>
       </section>
     </main>
     <footer class="footer">
       <p class="footer__copyright">© 2022. Mesto Russia</p>
     </footer>
-    <section class="popup">
+    <section class="popup popup_edit-profile">
       <div class="popup__container">
         <button class="popup__close-button" type="button"></button>
         <h3 class="popup__title">Редактировать профиль</h3>
@@ -83,6 +51,26 @@
         </form>
       </div>
     </section>
-    <script src="./scripts/index.js"></script>
+    <section class="popup popup_add-cards">
+      <div class="popup__container">
+        <button class="popup__close-button" type="button"></button>
+        <h3 class="popup__title">Новое место</h3>
+        <form class="popup__content">
+          <input class="popup__info" type="text" placeholder="Название" id="appellation" name="appelation">
+          <input class="popup__info" type="text" placeholder="Ссылка на картинку" id="link" name="link">
+          <button class="popup__save-button" type="submit">Создать</button>
+        </form>
+      </div>
+    </section>
+    <section class="popup popup_open-cards">
+      <div class="popup__container-figure">
+        <button class="popup__close-button" type="button"></button>
+        <figure class="popup__figure">
+          <img class="popup__image" src="#" alt="Полноразмерное изображение карточки">
+          <figcaption class="popup__caption"></figcaption>
+        </figure>
+      </div>
+    </section>
+    <script src="./scripts/index.js" type="module"></script>
   </body>
 </html>
