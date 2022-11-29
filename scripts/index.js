@@ -11,6 +11,7 @@ const cardAddButton = document.querySelector('.add-button');
 // элементы попапа
 let popupEditProfileSection = document.querySelector('.popup_edit-profile');
 let popupAddCardSection = document.querySelector('.popup_add-cards');
+let popupOpenCardSection = document.querySelector('.popup_open-cards');
 let popupEditProfileForm = popupEditProfileSection.querySelector('.popup__content');
 let popupAddProfileForm = popupAddCardSection.querySelector('.popup__content');
 let popupCloseButtonList = document.querySelectorAll('.popup__close-button');
@@ -18,12 +19,15 @@ let nameInput = document.querySelector('#name');
 let jobInput = document.querySelector('#about');
 let imageInput = document.querySelector('#link');
 let appellationInput = document.querySelector('#appellation');
+let imageOpen = document.querySelector('.popup__image');
+let figcaptureOpen = document.querySelector('.popup__caption');
 
 // текстовые элементы страницы
 let profileName = document.querySelector('.profile__name');
 let profileDescription = document.querySelector('.profile__description');
 
-function openPopup(popupSection) {
+//открытие попапов
+function openPopup(popupSection, evt) {
   if (popupSection.classList.contains('popup_edit-profile')) {
     popupSection.classList.add('popup_opened');
     autofillPopupEditProfileInputs();
@@ -31,8 +35,13 @@ function openPopup(popupSection) {
   else if (popupSection.classList.contains('popup_add-cards')) {
     popupSection.classList.add('popup_opened');
   }
+  else if (popupSection.classList.contains('popup_open-cards')) {
+    popupSection.classList.add('popup_opened');
+    autofillPopupOpenCardSection(evt);
+  }
 }
 
+//закрытие попапов
 function closePopup(evt) {
   evt.target.closest('.popup').classList.remove('popup_opened');
 }
@@ -43,6 +52,11 @@ function autofillPopupEditProfileInputs() {
   jobInput.value = profileDescription.textContent;
 }
 
+//автозаполнение попапа открытия карточки
+function autofillPopupOpenCardSection(evt) {
+  imageOpen.src = evt.target.src;
+  figcaptureOpen.textContent = evt.target.closest('.element').querySelector('.element__name').textContent;
+}
 
 // сохранение изменений в попапе редактирования профиля
 function editProfileFormSubmitHandler (evt) {
@@ -61,6 +75,8 @@ function addCardFormSubmitHandler (evt) {
   elementsContainer.prepend(cardElement);
   closePopup(evt);
   listenCardEvents(cardElement);
+  imageInput.value = '';
+  appellationInput.value = '';
 }
 
 // функция со слушателями событий для карточек
@@ -70,6 +86,9 @@ function listenCardEvents(cardElement) {
   });
   cardElement.querySelector('.element__delete-button').addEventListener('click', function(evt) {
     evt.target.closest('.element').remove();
+  });
+  cardElement.querySelector('.element__image').addEventListener('click', function(evt) {
+    openPopup(popupOpenCardSection, evt);
   });
 } 
 
@@ -90,4 +109,3 @@ initialCards.forEach(element => {
   elementsContainer.append(cardElement);
   listenCardEvents(cardElement);
 });
-
