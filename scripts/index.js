@@ -2,7 +2,7 @@ import {initialCards} from './data.js';
 
 // карточки на странице
 const cardTemplate = document.querySelector('#card-template').content;
-const elementsContainer = document.querySelector('.elements-container');
+let elementsContainer = document.querySelector('.elements-container');
 
 //кнопки на странице
 const profileEditButton = document.querySelector('.edit-button');
@@ -14,7 +14,7 @@ let popupAddCardSection = document.querySelector('.popup_add-cards');
 let popupOpenCardSection = document.querySelector('.popup_open-cards');
 let popupEditProfileForm = popupEditProfileSection.querySelector('.popup__content');
 let popupAddProfileForm = popupAddCardSection.querySelector('.popup__content');
-let popupCloseButtonList = document.querySelectorAll('.popup__close-button');
+const popupCloseButtons = document.querySelectorAll('.popup__close-button');
 let nameInput = document.querySelector('#name');
 let jobInput = document.querySelector('#about');
 let imageInput = document.querySelector('#link');
@@ -97,7 +97,7 @@ profileEditButton.addEventListener('click', () => openPopup(popupEditProfileSect
 cardAddButton.addEventListener('click', () => openPopup(popupAddCardSection));
 popupEditProfileForm.addEventListener('submit', editProfileFormSubmitHandler);
 popupAddProfileForm.addEventListener('submit', addCardFormSubmitHandler);
-popupCloseButtonList.forEach(button => {
+popupCloseButtons.forEach(button => {
   button.addEventListener('click', closePopup);
 });
 
