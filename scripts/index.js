@@ -50,11 +50,6 @@ function closePopup(popupSection) {
   popupSection.classList.remove('popup_opened');
 }
 
-//функция закрытия по нажатию на "крестик"
-function closePopupByClickCloseButton(evt) {
-  closePopup(evt.target.closest('.popup'));
-}
-
 //автозаполнение инпутов в попапе редактирования профиля
 function autofillPopupEditProfileInputs() {
   nameInput.value = profileName.textContent;
@@ -64,7 +59,8 @@ function autofillPopupEditProfileInputs() {
 //автозаполнение попапа открытия карточки
 function autofillPopupOpenCardSection(evt) {
   imageOpen.src = evt.target.src;
-  figcaptureOpen.textContent = evt.target.closest('.element').querySelector('.element__name').textContent;
+  imageOpen.alt = evt.target.alt;
+  figcaptureOpen.textContent = evt.target.alt;
 }
 
 // сохранение изменений в попапе редактирования профиля
@@ -89,15 +85,12 @@ function createCard(element) {
 function addCardFormSubmitHandler (evt) {
   evt.preventDefault();
   const initialCard = {
-    name: '',
-    link: ''
+    name: imageInput.value,
+    link: appellationInput.value
   };
-  initialCard.link = imageInput.value;
-  initialCard.name = appellationInput.value;
   elementsContainer.prepend(createCard(initialCard));
   closePopup(popupAddCardSection);
-  imageInput.value = '';
-  appellationInput.value = '';
+  popupAddProfileForm.reset();
 }
 
 // функция со слушателями событий для карточек
@@ -119,7 +112,8 @@ cardAddButton.addEventListener('click', () => openPopup(popupAddCardSection));
 popupEditProfileForm.addEventListener('submit', editProfileFormSubmitHandler);
 popupAddProfileForm.addEventListener('submit', addCardFormSubmitHandler);
 popupCloseButtons.forEach(button => {
-  button.addEventListener('click', closePopupByClickCloseButton);
+  const popup = button.closest('.popup');
+  button.addEventListener('click', () => closePopup(popup));
 });
 
 //предзаполнение карточек из массива
