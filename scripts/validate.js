@@ -89,5 +89,3 @@ export function validateOpenedPopup(popupSection, object) {
     toggleButtonState(inputList, buttonElement, object);
   });
 }
-
-

@@ -11,6 +11,7 @@ const profileEditButton = document.querySelector('.edit-button');
 const cardAddButton = document.querySelector('.add-button');
 
 // элементы попапа
+const popupSections = document.querySelectorAll('.popup');
 const popupEditProfileSection = document.querySelector('.popup_edit-profile');
 const popupAddCardSection = document.querySelector('.popup_add-cards');
 const popupOpenCardSection = document.querySelector('.popup_open-cards');
@@ -55,6 +56,20 @@ function openCardPopup(evt) {
 //закрытие попапов
 function closePopup(popupSection) {
   popupSection.classList.remove('popup_opened');
+}
+
+// функция закрытия попапа по нажатию на "esc"
+function closePopupByEsc(evt) {
+  if (evt.key === 'Escape') {
+    closePopup(document.querySelector('.popup_opened'));
+  }
+}
+
+// функция закрытия попапа по нажатию на оверлей
+function closePopupByOverlay(evt) {
+  if (evt.target.classList.contains('popup_opened')) {
+    closePopup(document.querySelector('.popup_opened'));
+  }
 }
 
 //автозаполнение инпутов в попапе редактирования профиля
@@ -122,10 +137,14 @@ popupCloseButtons.forEach(button => {
   const popup = button.closest('.popup');
   button.addEventListener('click', () => closePopup(popup));
 });
+document.addEventListener('keydown', closePopupByEsc);
+popupSections.forEach(popupSection => {
+  popupSection.addEventListener('mousedown', function(evt) {
+    closePopupByOverlay(evt);
+  })
+});
 
 //предзаполнение карточек из массива
 initialCards.forEach(element => {
   elementsContainer.append(createCard(element));
 });
-
-
