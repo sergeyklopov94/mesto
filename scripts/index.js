@@ -1,4 +1,6 @@
 import {initialCards} from './data.js';
+import {validateOpenedPopup} from './validate.js';
+import {formValidators} from './validate.js';
 
 // карточки на странице
 const cardTemplate = document.querySelector('#card-template').content;
@@ -15,10 +17,10 @@ const popupOpenCardSection = document.querySelector('.popup_open-cards');
 const popupEditProfileForm = popupEditProfileSection.querySelector('.popup__content');
 const popupAddProfileForm = popupAddCardSection.querySelector('.popup__content');
 const popupCloseButtons = document.querySelectorAll('.popup__close-button');
-const nameInput = document.querySelector('#name');
-const jobInput = document.querySelector('#about');
-const imageInput = document.querySelector('#link');
-const appellationInput = document.querySelector('#appellation');
+const nameInput = document.querySelector('#name-input');
+const jobInput = document.querySelector('#about-input');
+const imageInput = document.querySelector('#link-input');
+const appellationInput = document.querySelector('#appellation-input');
 const imageOpen = document.querySelector('.popup__image');
 const figcaptureOpen = document.querySelector('.popup__caption');
 
@@ -31,13 +33,18 @@ function openPopup(popupSection) {
   popupSection.classList.add('popup_opened');
 }
 
-
 //функция открытия с предзаполнением полей попапа редактирования профиля
 function openProfilePopup() {
   autofillPopupEditProfileInputs();
+  validateOpenedPopup(popupEditProfileSection, formValidators);
   openPopup(popupEditProfileSection);
 }
 
+//функция открытия попапа добавления карточки
+function openAddCardPopup() {
+  validateOpenedPopup(popupAddCardSection, formValidators);
+  openPopup(popupAddCardSection);
+}
 
 //функция открытия карточки в масштабе
 function openCardPopup(evt) {
@@ -108,7 +115,7 @@ function listenCardEvents(cardElement) {
 
 // слушатели событий
 profileEditButton.addEventListener('click', openProfilePopup);
-cardAddButton.addEventListener('click', () => openPopup(popupAddCardSection));
+cardAddButton.addEventListener('click', openAddCardPopup);
 popupEditProfileForm.addEventListener('submit', editProfileFormSubmitHandler);
 popupAddProfileForm.addEventListener('submit', addCardFormSubmitHandler);
 popupCloseButtons.forEach(button => {
@@ -120,3 +127,5 @@ popupCloseButtons.forEach(button => {
 initialCards.forEach(element => {
   elementsContainer.append(createCard(element));
 });
+
+

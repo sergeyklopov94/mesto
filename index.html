@@ -44,9 +44,15 @@
       <div class="popup__container">
         <button class="popup__close-button" type="button"></button>
         <h3 class="popup__title">Редактировать профиль</h3>
-        <form class="popup__content">
-          <input class="popup__info" type="text" placeholder="Имя" id="name" name="name">
-          <input class="popup__info" type="text" placeholder="О себе" id="about" name="about">
+        <form class="popup__content" novalidate>
+          <label class="popup__field">
+            <input class="popup__info" type="text" placeholder="Имя" id="name-input" name="name" minlength="2" maxlength="40" required>
+            <span class="popup__info-error name-input-error"></span>
+          </label>
+          <label class="popup__field">
+            <input class="popup__info" type="text" placeholder="О себе" id="about-input" name="about" minlength="2" maxlength="200" required>
+            <span class="popup__info-error about-input-error"></span>
+          </label>
           <button class="popup__save-button" type="submit">Сохранить</button>
         </form>
       </div>
@@ -55,9 +61,15 @@
       <div class="popup__container">
         <button class="popup__close-button" type="button"></button>
         <h3 class="popup__title">Новое место</h3>
-        <form class="popup__content">
-          <input class="popup__info" type="text" placeholder="Название" id="appellation" name="appelation">
-          <input class="popup__info" type="text" placeholder="Ссылка на картинку" id="link" name="link">
+        <form class="popup__content" novalidate>
+          <label class="popup__field">
+            <input class="popup__info" type="text" placeholder="Название" id="appellation-input" name="appelation" minlength="2" maxlength="30" required>
+            <span class="popup__info-error appellation-input-error"></span>
+          </label>
+          <label class="popup__field">
+            <input class="popup__info" type="url" placeholder="Ссылка на картинку" id="link-input" name="link" required>
+            <span class="popup__info-error link-input-error"></span>
+          </label>
           <button class="popup__save-button" type="submit">Создать</button>
         </form>
       </div>
@@ -72,5 +84,6 @@
       </div>
     </section>
     <script src="./scripts/index.js" type="module"></script>
+    <script src="./scripts/validate.js" type="module"></script>
   </body>
 </html>

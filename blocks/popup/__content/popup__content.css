@@ -1,7 +1,10 @@
 .popup__content {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   padding: 0 36px 37px;
+  height: 100%;
+  flex-grow: 1;
 }
 
 @media screen and (max-width: 416px) {
