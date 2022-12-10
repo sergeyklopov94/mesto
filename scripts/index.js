@@ -32,6 +32,7 @@ const profileDescription = document.querySelector('.profile__description');
 //открытие попапов
 function openPopup(popupSection) {
   popupSection.classList.add('popup_opened');
+  document.addEventListener('keydown', closePopupByEsc);
 }
 
 //функция открытия с предзаполнением полей попапа редактирования профиля
@@ -56,6 +57,7 @@ function openCardPopup(evt) {
 //закрытие попапов
 function closePopup(popupSection) {
   popupSection.classList.remove('popup_opened');
+  document.removeEventListener('keydown', closePopupByEsc);
 }
 
 // функция закрытия попапа по нажатию на "esc"
@@ -137,7 +139,6 @@ popupCloseButtons.forEach(button => {
   const popup = button.closest('.popup');
   button.addEventListener('click', () => closePopup(popup));
 });
-document.addEventListener('keydown', closePopupByEsc);
 popupSections.forEach(popupSection => {
   popupSection.addEventListener('mousedown', function(evt) {
     closePopupByOverlay(evt);
