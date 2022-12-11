@@ -9,27 +9,27 @@ export const formValidators = {
 };
 
 // функция отображения ошибок при валидации
-const showInputError = (formElement, inputElement, errorMessage, object) => {
+const showInputError = (formElement, inputElement, errorMessage, formValidators) => {
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
-  inputElement.classList.add(object.inputErrorClass);
+  inputElement.classList.add(formValidators.inputErrorClass);
   errorElement.textContent = errorMessage;
-  errorElement.classList.add(object.errorClass);
+  errorElement.classList.add(formValidators.errorClass);
 };
 
 // функция скрытия ошибок валидации в формах
-const hideInputError = (formElement, inputElement, object) => {
+const hideInputError = (formElement, inputElement, formValidators) => {
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
-  inputElement.classList.remove(object.inputErrorClass);
-  errorElement.classList.remove(object.errorClass);
+  inputElement.classList.remove(formValidators.inputErrorClass);
+  errorElement.classList.remove(formValidators.errorClass);
   errorElement.textContent = '';
 };
 
 // функция выбора отображения/скрытия ошибок валидации форм
-const checkInputValidity = (formElement, inputElement, object) => {
+const checkInputValidity = (formElement, inputElement, formValidators) => {
   if (!inputElement.validity.valid) {
-    showInputError(formElement, inputElement, inputElement.validationMessage, object);
+    showInputError(formElement, inputElement, inputElement.validationMessage, formValidators);
   } else {
-    hideInputError(formElement, inputElement, object);
+    hideInputError(formElement, inputElement, formValidators);
   }
 };
 
@@ -42,37 +42,37 @@ const hasInvalidInput = (inputList) => {
 
 
 // функция изменения работы кнопки в зависимости от валидности инпутов формы
-const toggleButtonState = (inputList, buttonElement, object) => {
+const toggleButtonState = (inputList, buttonElement, formValidators) => {
   if (hasInvalidInput(inputList)) {
-    buttonElement.classList.add(object.inactiveButtonClass);
+    buttonElement.classList.add(formValidators.inactiveButtonClass);
     buttonElement.disabled = true;
   } else {
-    buttonElement.classList.remove(object.inactiveButtonClass);
+    buttonElement.classList.remove(formValidators.inactiveButtonClass);
     buttonElement.disabled = false;
   }
 };
 
 // функция добавления слушателей для инпутов формы
-const setEventListeners = (formElement, object) => {
-  const inputList = Array.from(formElement.querySelectorAll(object.inputSelector));
-  const buttonElement = formElement.querySelector(object.submitButtonSelector);
-  toggleButtonState(inputList, buttonElement, object);
+const setEventListeners = (formElement, formValidators) => {
+  const inputList = Array.from(formElement.querySelectorAll(formValidators.inputSelector));
+  const buttonElement = formElement.querySelector(formValidators.submitButtonSelector);
+  toggleButtonState(inputList, buttonElement, formValidators);
   inputList.forEach((inputElement) => {
     inputElement.addEventListener('input', function () {
-      checkInputValidity(formElement, inputElement, object);
-      toggleButtonState(inputList, buttonElement, object);
+      checkInputValidity(formElement, inputElement, formValidators);
+      toggleButtonState(inputList, buttonElement, formValidators);
     });
   });
 };
 
 // функция включения валидации всех форм
-const enableValidation = (object) => {
-  const formList = Array.from(document.querySelectorAll(object.formSelector));
+const enableValidation = (formValidators) => {
+  const formList = Array.from(document.querySelectorAll(formValidators.formSelector));
   formList.forEach((formElement) => {
     formElement.addEventListener('submit', function (evt) {
       evt.preventDefault();
     });
-      setEventListeners(formElement, object);
+      setEventListeners(formElement, formValidators);
   });
 };
 
@@ -80,12 +80,12 @@ enableValidation(formValidators);
 
 // функция скрытия ошибок валидации при открытии попапа и установки состояния кнопки
 // принимает в параметрах секцию попапа и объект с настройками
-export function validateOpenedPopup(popupSection, object) {
-  const form = popupSection.querySelector(object.formSelector);
-  const inputList = Array.from(form.querySelectorAll(object.inputSelector));
-  const buttonElement = form.querySelector(object.submitButtonSelector);
+export function resetFormState(popupSection, formValidators) {
+  const form = popupSection.querySelector(formValidators.formSelector);
+  const inputList = Array.from(form.querySelectorAll(formValidators.inputSelector));
+  const buttonElement = form.querySelector(formValidators.submitButtonSelector);
   inputList.forEach((inputElement) => {
-    hideInputError(form, inputElement, object);
-    toggleButtonState(inputList, buttonElement, object);
+    hideInputError(form, inputElement, formValidators);
+    toggleButtonState(inputList, buttonElement, formValidators);
   });
 }

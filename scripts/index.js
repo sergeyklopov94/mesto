@@ -1,5 +1,5 @@
 import {initialCards} from './data.js';
-import {validateOpenedPopup} from './validate.js';
+import {resetFormState} from './validate.js';
 import {formValidators} from './validate.js';
 
 // карточки на странице
@@ -38,13 +38,13 @@ function openPopup(popupSection) {
 //функция открытия с предзаполнением полей попапа редактирования профиля
 function openProfilePopup() {
   autofillPopupEditProfileInputs();
-  validateOpenedPopup(popupEditProfileSection, formValidators);
+  resetFormState(popupEditProfileSection, formValidators);
   openPopup(popupEditProfileSection);
 }
 
 //функция открытия попапа добавления карточки
 function openAddCardPopup() {
-  validateOpenedPopup(popupAddCardSection, formValidators);
+  resetFormState(popupAddCardSection, formValidators);
   openPopup(popupAddCardSection);
 }
 
@@ -68,9 +68,9 @@ function closePopupByEsc(evt) {
 }
 
 // функция закрытия попапа по нажатию на оверлей
-function closePopupByOverlay(evt) {
+function closePopupByOverlay(evt, popup) {
   if (evt.target.classList.contains('popup_opened')) {
-    closePopup(document.querySelector('.popup_opened'));
+    closePopup(popup);
   }
 }
 
@@ -98,9 +98,10 @@ function editProfileFormSubmitHandler (evt) {
 //функция создания карточки
 function createCard(element) {
   const cardElement = cardTemplate.querySelector('.element').cloneNode(true);
-  cardElement.querySelector('.element__image').src = element.link;
+  const image = cardElement.querySelector('.element__image');
+  image.src = element.link;
+  image.alt = element.name;
   cardElement.querySelector('.element__name').textContent = element.name;
-  cardElement.querySelector('.element__image').alt = element.name;
   listenCardEvents(cardElement);
   return cardElement;
 }
@@ -141,7 +142,7 @@ popupCloseButtons.forEach(button => {
 });
 popupSections.forEach(popupSection => {
   popupSection.addEventListener('mousedown', function(evt) {
-    closePopupByOverlay(evt);
+    closePopupByOverlay(evt, popupSection);
   })
 });
 
