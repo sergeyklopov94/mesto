@@ -51,8 +51,8 @@ function openAddCardPopup() {
 }
 
 // функция открытия карточки в масштабе
-export function openCardPopup(evt) {
-  autofillPopupOpenCardSection(evt);
+export function openCardPopup(cardImage) {
+  autofillPopupOpenCardSection(cardImage);
   openPopup(popupOpenCardSection);
 }
 
@@ -83,10 +83,10 @@ function autofillPopupEditProfileInputs() {
 }
 
 // автозаполнение попапа открытия карточки
-function autofillPopupOpenCardSection(evt) {
-  imageOpen.src = evt.target.src;
-  imageOpen.alt = evt.target.alt;
-  figcaptureOpen.textContent = evt.target.alt;
+function autofillPopupOpenCardSection(cardImage) {
+  imageOpen.src = cardImage.src;
+  imageOpen.alt = cardImage.alt;
+  figcaptureOpen.textContent = cardImage.alt;
 }
 
 // сохранение изменений в попапе редактирования профиля

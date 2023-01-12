@@ -1,3 +1,4 @@
+// импорт модулей
 import {openCardPopup} from './index.js';
 
 // класс - карточка
@@ -17,15 +18,32 @@ export class Card {
 
   // приватный метод класса со слушателями событий для карточек
   _listenCardEvents() {
-    this._element.querySelector('.element__like-button').addEventListener('click', function (evt) {
-      evt.target.classList.toggle('element__like-button_active');
+    this._elementLikeButton = this._element.querySelector('.element__like-button');
+    this._elementDeleteButton = this._element.querySelector('.element__delete-button');
+    this._elementLikeButton.addEventListener('click', () => {
+      this._handleLikeButtonClick();
     });
-    this._element.querySelector('.element__delete-button').addEventListener('click', function(evt) {
-      evt.target.closest('.element').remove();
+    this._elementDeleteButton.addEventListener('click', () => {
+      this._handleDeleteButtonClick();
     });
-    this._elementImage.addEventListener('click', function(evt) {
-      openCardPopup(evt);
+    this._elementImage.addEventListener('click', () => {
+      this._handleImageClick();
     });
+  }
+
+  // приватный метод класса добавления/удаления 'лайка'
+  _handleLikeButtonClick() {
+    this._elementLikeButton.classList.toggle('element__like-button_active');
+  }
+
+  // приватный метод класса удаления карточки
+  _handleDeleteButtonClick() {
+    this._element.remove();
+  }
+
+  // приватный метод открытия карточки в масштабе
+  _handleImageClick() {
+    openCardPopup(this._elementImage);
   }
 
   // публичный метод класса для создания карточки
