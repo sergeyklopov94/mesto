@@ -1,11 +1,12 @@
 // импорт модулей
-import {openCardPopup} from './index.js';
+import openCardPopup from './index.js';
 
 // класс - карточка
-export class Card {
+export default class Card {
   constructor(data, template) {
     this._name = data.name;
     this._image = data.link;
+
     this._template = template;
   }
 
@@ -49,7 +50,6 @@ export class Card {
   // публичный метод класса для создания карточки
   createCard() {
     this._element = this._getTemplate();
-    console.log(this._element);
     this._elementImage = this._element.querySelector('.element__image');
     this._elementName = this._element.querySelector('.element__name');
     this._elementImage.src = this._image;

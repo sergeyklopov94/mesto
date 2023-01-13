@@ -1,8 +1,8 @@
 // импорт модулей
 import {initialCards} from './data.js';
-import {resetFormState} from './validate.js';
 import {formValidators} from './validate.js';
-import {Card} from './card.js';
+import Card from './Card.js';
+import FormValidator from './FormValidator.js';
 
 // карточки на странице
 const cardTemplate = document.querySelector('#card-template').content;
@@ -31,6 +31,14 @@ const figcaptureOpen = document.querySelector('.popup__caption');
 const profileName = document.querySelector('.profile__name');
 const profileDescription = document.querySelector('.profile__description');
 
+// создание экземпляров класса валидации формы
+const editProfileFormValidator = new FormValidator(formValidators, popupEditProfileForm);
+const addCardFormValidator = new FormValidator(formValidators, popupAddProfileForm);
+
+//вызов метода класса валидации для каждого объекта
+editProfileFormValidator.enableValidation();
+addCardFormValidator.enableValidation();
+
 // открытие попапов
 function openPopup(popupSection) {
   popupSection.classList.add('popup_opened');
@@ -40,18 +48,18 @@ function openPopup(popupSection) {
 // функция открытия с предзаполнением полей попапа редактирования профиля
 function openProfilePopup() {
   autofillPopupEditProfileInputs();
-  resetFormState(popupEditProfileSection, formValidators);
+  editProfileFormValidator.resetFormState();
   openPopup(popupEditProfileSection);
 }
 
 // функция открытия попапа добавления карточки
 function openAddCardPopup() {
-  resetFormState(popupAddCardSection, formValidators);
+  addCardFormValidator.resetFormState();
   openPopup(popupAddCardSection);
 }
 
 // функция открытия карточки в масштабе
-export function openCardPopup(cardImage) {
+export default function openCardPopup(cardImage) {
   autofillPopupOpenCardSection(cardImage);
   openPopup(popupOpenCardSection);
 }
