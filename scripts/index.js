@@ -1,8 +1,8 @@
 // импорт модулей
 import {initialCards} from './data.js';
 import {formValidators} from './validate.js';
-import Card from './Сard.js';
-import FormValidator from './FormValidator.js';
+import {Card} from './Сard.js';
+import {FormValidator} from './FormValidator.js';
 
 // карточки на странице
 const cardTemplate = document.querySelector('#card-template').content;

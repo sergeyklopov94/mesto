@@ -2,7 +2,7 @@
 import {openCardPopup} from './index.js';
 
 // класс - карточка
-export default class Card {
+export class Card {
   constructor(data, template) {
     this._name = data.name;
     this._image = data.link;

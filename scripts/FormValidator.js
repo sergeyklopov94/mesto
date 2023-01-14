@@ -1,5 +1,5 @@
 // класс - валидация формы
-export default class FormValidator {
+export class FormValidator {
   constructor(data, form) {
     this._formSelector = data.formSelector;
     this._inputSelector = data.inputSelector;
