@@ -59,7 +59,7 @@ function openAddCardPopup() {
 }
 
 // функция открытия карточки в масштабе
-export default function openCardPopup(cardImage) {
+export function openCardPopup(cardImage) {
   autofillPopupOpenCardSection(cardImage);
   openPopup(popupOpenCardSection);
 }
