@@ -1,6 +1,7 @@
 .content {
   display: grid;
   row-gap: 51px;
+  flex-grow: 1;
 }
 
 @media screen and (max-width: 896px) {

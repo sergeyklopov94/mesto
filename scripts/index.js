@@ -32,12 +32,12 @@ const profileName = document.querySelector('.profile__name');
 const profileDescription = document.querySelector('.profile__description');
 
 // создание экземпляров класса валидации формы
-const editProfileFormValidator = new FormValidator(formValidators, popupEditProfileForm);
-const addCardFormValidator = new FormValidator(formValidators, popupAddProfileForm);
+const ProfileFormValidator = new FormValidator(formValidators, popupEditProfileForm);
+const CardFormValidator = new FormValidator(formValidators, popupAddProfileForm);
 
 //вызов метода класса валидации для каждого объекта
-editProfileFormValidator.enableValidation();
-addCardFormValidator.enableValidation();
+ProfileFormValidator.enableValidation();
+CardFormValidator.enableValidation();
 
 // открытие попапов
 function openPopup(popupSection) {
@@ -48,13 +48,13 @@ function openPopup(popupSection) {
 // функция открытия с предзаполнением полей попапа редактирования профиля
 function openProfilePopup() {
   autofillPopupEditProfileInputs();
-  editProfileFormValidator.resetFormState();
+  ProfileFormValidator.resetFormState();
   openPopup(popupEditProfileSection);
 }
 
 // функция открытия попапа добавления карточки
 function openAddCardPopup() {
-  addCardFormValidator.resetFormState();
+  CardFormValidator.resetFormState();
   openPopup(popupAddCardSection);
 }
 

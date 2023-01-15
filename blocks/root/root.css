@@ -3,7 +3,7 @@
   color: #fff;
   max-width: 880px;
   min-width: 320px;
-  min-height: 100vh;
+  min-height: calc(100vh - 105px);
   font-weight: 400;
   display: flex;
   flex-direction: column;

@@ -40,6 +40,7 @@ export class Card {
   // приватный метод класса удаления карточки
   _handleDeleteButtonClick() {
     this._element.remove();
+    this._element = null;
   }
 
   // приватный метод открытия карточки в масштабе

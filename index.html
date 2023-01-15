@@ -23,24 +23,13 @@
         <button class="add-button" type="button"></button>
       </section>
       <section class="elements">
-        <ul class="elements-container">
-          <template id="card-template">
-            <li class="element">
-              <button class="element__delete-button" type="button"></button>
-              <img class="element__image" src="#" alt="">
-              <div class="element__info">
-                <h2 class="element__name"></h2>
-                <button class="element__like-button" type="button"></button>
-              </div>
-            </li>
-          </template>
-        </ul>
+        <ul class="elements-container"></ul>
       </section>
     </main>
     <footer class="footer">
       <p class="footer__copyright">© 2022. Mesto Russia</p>
     </footer>
-    <section class="popup popup_edit-profile">
+    <div class="popup popup_edit-profile">
       <div class="popup__container">
         <button class="popup__close-button" type="button"></button>
         <h3 class="popup__title">Редактировать профиль</h3>
@@ -56,7 +45,7 @@
           <button class="popup__save-button" type="submit">Сохранить</button>
         </form>
       </div>
-    </section>
+    </div>
     <section class="popup popup_add-cards">
       <div class="popup__container">
         <button class="popup__close-button" type="button"></button>
@@ -83,6 +72,16 @@
         </figure>
       </div>
     </section>
+    <template id="card-template">
+      <li class="element">
+        <button class="element__delete-button" type="button"></button>
+        <img class="element__image" src="#" alt="">
+        <div class="element__info">
+          <h2 class="element__name"></h2>
+          <button class="element__like-button" type="button"></button>
+        </div>
+      </li>
+    </template>
     <script src="./scripts/index.js" type="module"></script>
   </body>
 </html>
