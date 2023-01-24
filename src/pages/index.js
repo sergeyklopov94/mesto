@@ -1,14 +1,14 @@
 // импорт картинок
-import elementDeleteButtonImage from './images/element-delete-button.svg';
-import popupCloseIconImage from './images/popup-close-icon.svg';
-import profileAddButtonImage from './images/profile-add-button.svg';
-import profileEditButtonImage from './images/profile-edit-button.svg';
-import profileLikeActiveButtonImage from './images/profile-like-active.svg';
-import profileLikeButtonImage from './images/profile-like.svg';
+import elementDeleteButtonImage from '../images/element-delete-button.svg';
+import popupCloseButtonImage from '../images/popup-close-icon.svg';
+import profileAddButtonImage from '../images/profile-add-button.svg';
+import profileEditButtonImage from '../images/profile-edit-button.svg';
+import profileLikeActiveButtonImage from '../images/profile-like-active.svg';
+import profileLikeButtonImage from '../images/profile-like.svg';
 
 const pictures = [
   { name: 'element-delete-button', link: elementDeleteButtonImage },
-  { name: 'popup-close-icon', link: popupCloseIconImage },
+  { name: 'popup-close-icon', link: popupCloseButtonImage },
   { name: 'profile-add-button', link: profileAddButtonImage },
   { name: 'profile-edit-button', link: profileEditButtonImage },
   { name: 'profile-like', link: profileLikeButtonImage },
@@ -16,13 +16,13 @@ const pictures = [
 ];
 
 // импорт стилей
-import './pages/index.css';
+import './index.css';
 
 // импорт модулей
-import {initialCards} from './data.js';
-import {formValidators} from './validate.js';
-import {Card} from './Сard.js';
-import {FormValidator} from './FormValidator.js';
+import {initialCards} from '../data.js';
+import {formValidators} from '../validate.js';
+import {Card} from '../components/Сard.js';
+import {FormValidator} from '../components/FormValidator.js';
 
 // карточки на странице
 const cardTemplate = document.querySelector('#card-template').content;

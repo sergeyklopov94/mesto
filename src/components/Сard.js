@@ -1,5 +1,5 @@
 // импорт модулей
-import {openCardPopup} from './index.js';
+import {openCardPopup} from '../pages/index.js';
 
 // класс - карточка
 export class Card {
