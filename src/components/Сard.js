@@ -1,19 +1,14 @@
-// импорт модулей
-import {openCardPopup} from '../pages/index.js';
-
-// класс - карточка
 export class Card {
-  constructor(data, template) {
+  constructor(data, template, {handleCardClick}) {
     this._name = data.name;
     this._image = data.link;
-
     this._template = template;
+    this._handleCardClick = handleCardClick;
   }
 
   // приватный метод класса для создания шаблона карточки
   _getTemplate() {
     const cardElement = this._template.querySelector('.element').cloneNode(true);
-
     return cardElement;
   }
 
@@ -28,7 +23,7 @@ export class Card {
       this._handleDeleteButtonClick();
     });
     this._elementImage.addEventListener('click', () => {
-      this._handleImageClick();
+      this._handleCardClick(this._elementImage);
     });
   }
 
@@ -43,11 +38,6 @@ export class Card {
     this._element = null;
   }
 
-  // приватный метод открытия карточки в масштабе
-  _handleImageClick() {
-    openCardPopup(this._elementImage);
-  }
-
   // публичный метод класса для создания карточки
   createCard() {
     this._element = this._getTemplate();
@@ -57,7 +47,6 @@ export class Card {
     this._elementImage.alt = this._name;
     this._elementName.textContent = this._name;
     this._listenCardEvents();
-
     return this._element;
   }
 }

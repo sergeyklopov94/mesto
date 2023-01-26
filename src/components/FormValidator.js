@@ -1,4 +1,3 @@
-// класс - валидация формы
 export class FormValidator {
   constructor(data, form) {
     this._formSelector = data.formSelector;
@@ -7,9 +6,9 @@ export class FormValidator {
     this._inactiveButtonClass = data.inactiveButtonClass;
     this._inputErrorClass = data.inputErrorClass;
     this._errorClass = data.errorClass;
-
     this._form = form;
   }
+
   // приватный метод класса для отображения ошибок при валидации
   _showInputError = (inputElement, errorMessage) => {
     this._errorElement = this._form.querySelector(`.${inputElement.id}-error`);
