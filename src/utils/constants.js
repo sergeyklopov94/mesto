@@ -36,9 +36,9 @@ export const formValidators = {
   errorClass: 'popup__error_visible'
 };
 
-// карточки на странице
-export const cardTemplate = document.querySelector('#card-template').content;
-export const elementsContainer = document.querySelector('.elements-container');
+// селекторы карточек на странице
+export const cardTemplateSelector = '#card-template';
+export const elementsContainerSelector = '.elements-container';
 
 // кнопки на странице
 export const profileEditButton = document.querySelector('.edit-button');
@@ -51,6 +51,15 @@ export const popupOpenCardSection = document.querySelector('.popup_open-cards');
 export const popupEditProfileForm = popupEditProfileSection.querySelector('.popup__content');
 export const popupAddCardForm = popupAddCardSection.querySelector('.popup__content');
 
+// селекторы попапа
+export const popupEditProfileSelector = '.popup_edit-profile';
+export const popupAddCardSelector = '.popup_add-cards';
+export const popupOpenCardSelector = '.popup_open-cards';
+
 // текстовые элементы страницы
 export const profileName = document.querySelector('.profile__name');
 export const profileDescription = document.querySelector('.profile__description');
+
+// селекторы текстовых элементов страницы
+export const profileNameSelector = '.profile__name';
+export const profileDescriptionSelector = '.profile__description';

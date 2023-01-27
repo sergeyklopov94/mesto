@@ -67,10 +67,7 @@ export class FormValidator {
 
   // публичный метод класса для включения валидации всех форм
   enableValidation = () => {
-    this._form.addEventListener('submit', function (evt) {
-        evt.preventDefault();
-      });
-        this._setEventListeners();
+    this._setEventListeners();
   };
   // публичный метод класса для скрытия ошибок валидации при открытии попапа и установки состояния кнопки
   resetFormState() {

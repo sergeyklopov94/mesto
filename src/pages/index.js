@@ -12,22 +12,22 @@ import { UserInfo } from '../components/UserInfo';
 import Section from '../components/Section.js';
 
 // импорт переменных
-import { profileName,
-  profileDescription,
-  cardTemplate,
+import { profileNameSelector,
+  profileDescriptionSelector,
+  cardTemplateSelector,
   popupAddCardForm,
   popupEditProfileForm,
   profileEditButton,
   cardAddButton,
-  elementsContainer,
-  popupAddCardSection,
-  popupEditProfileSection,
-  popupOpenCardSection
+  elementsContainerSelector,
+  popupAddCardSelector,
+  popupEditProfileSelector,
+  popupOpenCardSelector
 } from '../utils/constants.js';
 
 // функция создания карточки
 function renderCard(initialCard) {
-  const card = new Card(initialCard, cardTemplate,
+  const card = new Card(initialCard, cardTemplateSelector,
     {
       handleCardClick: (image) => {
         popupWithImage.open(image);
@@ -49,7 +49,7 @@ cardFormValidator.enableValidation();
 const cards = new Section({ items: initialCards, renderer: (initialCard) => {
   cards.addItemEnd(renderCard(initialCard))
   }
-}, elementsContainer);
+}, elementsContainerSelector);
 
 cards.renderItems();
 
@@ -59,14 +59,14 @@ const popupWithCardForm = new PopupWithForm( {
     cards.addItemStart(renderCard(card));
     popupWithCardForm.close();
   }
-}, popupAddCardSection);
+}, popupAddCardSelector);
 
 popupWithCardForm.setEventListeners();
 
 // создание экземпляра класса UserInfo
 const userInfo = new UserInfo({
-  userNameSelector: profileName,
-  userAboutSelector: profileDescription });
+  userNameSelector: profileNameSelector,
+  userAboutSelector: profileDescriptionSelector });
 
 // создание экземпляра класса PopupWithForm для попапа редактирования профиля и вызов метода для объекта
   const popupWithProfileForm = new PopupWithForm( {
@@ -74,12 +74,12 @@ const userInfo = new UserInfo({
       userInfo.setUserInfo(data);
       popupWithProfileForm.close();
     }
-  }, popupEditProfileSection);
+  }, popupEditProfileSelector);
 
   popupWithProfileForm.setEventListeners();
 
 // создание экземпляра класса PopupWithImage и вызов метода для объекта
-const popupWithImage = new PopupWithImage(popupOpenCardSection);
+const popupWithImage = new PopupWithImage(popupOpenCardSelector);
 
 popupWithImage.setEventListeners();
 

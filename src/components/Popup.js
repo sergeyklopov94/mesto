@@ -1,6 +1,7 @@
 export class Popup {
   constructor(popupSelector) {
-    this._popupSelector = popupSelector;
+    this._popup = document.querySelector(popupSelector);
+    this._handleEscClose = this._handleEscClose.bind(this);
   }
 
   // Приватный метод закрытия попапа клавишей 'Esc'
@@ -19,25 +20,21 @@ export class Popup {
 
   // Публичный метод открытия попапа
   open() {
-    this._popupSelector.classList.add('popup_opened');
-    document.addEventListener('keydown', (evt) => {
-      this._handleEscClose(evt);
-    });
+    this._popup.classList.add('popup_opened');
+    document.addEventListener('keydown', this._handleEscClose);
   }
 
   // Публичный метод закрытия попапа
   close() {
-    this._popupSelector.classList.remove('popup_opened');
-    document.removeEventListener('keydown', (evt) => {
-      this._handleEscClose(evt);
-    });
+    this._popup.classList.remove('popup_opened');
+    document.removeEventListener('keydown', this._handleEscClose);
   }
 
   // Публичный метод добавления слушателя для закрытия попапа
   setEventListeners() {
-    this._popupCloseButton = this._popupSelector.querySelector('.popup__close-button');
+    this._popupCloseButton = this._popup.querySelector('.popup__close-button');
     this._popupCloseButton.addEventListener('click', () => this.close());
-    this._popupSelector.addEventListener('mousedown', (evt) => {
+    this._popup.addEventListener('mousedown', (evt) => {
       this._handleOverlayClose(evt);
     });
   }
