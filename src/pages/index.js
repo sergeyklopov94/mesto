@@ -9,20 +9,26 @@ import { FormValidator } from '../components/FormValidator.js';
 import { PopupWithImage } from '../components/PopupWithImage.js';
 import { PopupWithForm } from '../components/PopupWithForm.js';
 import { UserInfo } from '../components/UserInfo';
+import { PopupWithConfirmation } from '../components/PopupWithConfirmation';
 import Section from '../components/Section.js';
 
 // импорт переменных
 import { profileNameSelector,
   profileDescriptionSelector,
+  profileAvatarSelector,
   cardTemplateSelector,
   popupAddCardForm,
   popupEditProfileForm,
+  popupEditAvatarForm,
   profileEditButton,
+  profileAvatarEditButton,
   cardAddButton,
   elementsContainerSelector,
   popupAddCardSelector,
   popupEditProfileSelector,
-  popupOpenCardSelector
+  popupEditAvatarSelector,
+  popupOpenCardSelector,
+  popupDeleteCardSelector
 } from '../utils/constants.js';
 
 // функция создания карточки
@@ -32,6 +38,11 @@ function renderCard(initialCard) {
       handleCardClick: (image) => {
         popupWithImage.open(image);
       }
+    },
+    {
+      handleDeleteClick: (card) => {
+        popupWithConfirmation.open(card);
+      }
     });
   const cardElement = card.createCard();
   return cardElement;
@@ -40,10 +51,12 @@ function renderCard(initialCard) {
 // создание экземпляров класса валидации формы
 const profileFormValidator = new FormValidator(formValidators, popupEditProfileForm);
 const cardFormValidator = new FormValidator(formValidators, popupAddCardForm);
+const avatarFormValidator = new FormValidator(formValidators, popupEditAvatarForm);
 
 // вызов метода класса валидации для каждого объекта
 profileFormValidator.enableValidation();
 cardFormValidator.enableValidation();
+avatarFormValidator.enableValidation();
 
 // создание экземпляра класса Section и вызов метода для объекта
 const cards = new Section({ items: initialCards, renderer: (initialCard) => {
@@ -66,7 +79,8 @@ popupWithCardForm.setEventListeners();
 // создание экземпляра класса UserInfo
 const userInfo = new UserInfo({
   userNameSelector: profileNameSelector,
-  userAboutSelector: profileDescriptionSelector });
+  userAboutSelector: profileDescriptionSelector,
+  userAvatarSelector: profileAvatarSelector});
 
 // создание экземпляра класса PopupWithForm для попапа редактирования профиля и вызов метода для объекта
   const popupWithProfileForm = new PopupWithForm( {
@@ -78,10 +92,30 @@ const userInfo = new UserInfo({
 
   popupWithProfileForm.setEventListeners();
 
+// создание экземпляра класса PopupWithForm для попапа редактирования аватара профиля и вызов метода для объекта
+  const popupWithAvatarForm = new PopupWithForm( {
+    handleFormSubmit: (data) => {
+      userInfo.setUserAvatar(data);
+      popupWithAvatarForm.close();
+    }
+  }, popupEditAvatarSelector);
+
+  popupWithAvatarForm.setEventListeners();
+
 // создание экземпляра класса PopupWithImage и вызов метода для объекта
 const popupWithImage = new PopupWithImage(popupOpenCardSelector);
 
 popupWithImage.setEventListeners();
+
+// создание экземпляра класса PopupWithConfirmation и вызов метода для объекта
+const popupWithConfirmation = new PopupWithConfirmation(popupDeleteCardSelector, {
+  handleFormSubmit: (card) => {
+
+    popupWithConfirmation.close();
+  }
+});
+
+popupWithConfirmation.setEventListeners();
 
 // слушатели событий
 profileEditButton.addEventListener('click', () => {
@@ -93,4 +127,8 @@ profileEditButton.addEventListener('click', () => {
 cardAddButton.addEventListener('click', () => {
   cardFormValidator.resetFormState();
   popupWithCardForm.open();
+});
+
+profileAvatarEditButton.addEventListener('click', () => {
+  popupWithAvatarForm.open();
 });

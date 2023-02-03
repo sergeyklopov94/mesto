@@ -1,7 +1,8 @@
 export class UserInfo {
-  constructor({userNameSelector, userAboutSelector}) {
+  constructor({userNameSelector, userAboutSelector, userAvatarSelector}) {
     this._userName = document.querySelector(userNameSelector);
     this._userAbout = document.querySelector(userAboutSelector);
+    this._userAvatar = document.querySelector(userAvatarSelector);
   }
 
   // публичный метод для возврата объекта с данными пользователя
@@ -13,9 +14,14 @@ export class UserInfo {
     return userInfo;
   }
 
-  // публичный метод для принятия новых данных пользователя и добавления их на страницу.
+  // публичный метод для принятия новых данных пользователя и добавления их на страницу
   setUserInfo(userInfo) {
     this._userName.textContent = userInfo.name;
     this._userAbout.textContent = userInfo.about;
+  }
+
+  // публичный метод для принятия нового аватара и добавления его на страницу
+  setUserAvatar(userInfo) {
+    this._userAvatar.src = userInfo.link;
   }
 }

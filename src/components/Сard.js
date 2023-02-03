@@ -1,10 +1,11 @@
 export class Card {
-  constructor(data, templateSelector, {handleCardClick}) {
+  constructor(data, templateSelector, {handleCardClick}, {handleDeleteClick}) {
     this._data = data;
     this._name = data.name;
     this._image = data.link;
     this._template = document.querySelector(templateSelector).content;
     this._handleCardClick = handleCardClick;
+    this._handleDeleteClick = handleDeleteClick;
   }
 
   // приватный метод класса для создания шаблона карточки
@@ -21,11 +22,9 @@ export class Card {
       this._handleLikeButtonClick();
     });
     this._elementDeleteButton.addEventListener('click', () => {
-      this._handleDeleteButtonClick();
+      this._handleDeleteClick(this._element);
     });
     this._elementImage.addEventListener('click', () => {
-      console.log(this._elementImage);
-      console.log(this._data);
       this._handleCardClick(this._data);
     });
   }
