@@ -1,10 +1,14 @@
 import { Popup } from './Popup.js';
 
 export class PopupWithConfirmation extends Popup {
-  constructor(popupSelector, { handleFormSubmit }) {
+  constructor(popupSelector) {
     super(popupSelector);
-    this._handleFormSubmit = handleFormSubmit;
     this._popupForm = this._popup.querySelector('.popup__content');
+  }
+
+  // публичный метод установки функции по сабмиту
+  handleFormSubmit(func) {
+    this._handleFormSubmit = func;
   }
 
   // публичный метод добавления обработчиков сабмита формы.
@@ -16,9 +20,9 @@ export class PopupWithConfirmation extends Popup {
     });
   }
 
-    // переопределенный публичный метод открытия попапа с подтверждением удаления карточки
-    open(card) {
-      this._card = card;
-      super.open();
-    }
+  // переопределенный публичный метод открытия попапа с подтверждением удаления карточки
+  open(card) {
+    this._card = card;
+    super.open();
+  }
 }

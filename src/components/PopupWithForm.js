@@ -17,14 +17,14 @@ export class PopupWithForm extends Popup {
     return inputsData;
   }
 
-  // Публичный метод для заполнения всех полей формы данными
+  // публичный метод для заполнения всех полей формы данными
   setInputValues(inputData) {
     this._inputs.forEach((input) => {
       input.value = inputData[input.name];
     });
   }
 
-  // Публичный метод добавления обработчиков сабмита формы.
+  // публичный метод добавления обработчиков сабмита формы.
   setEventListeners() {
     super.setEventListeners();
     this._popupForm.addEventListener('submit', (evt) => {
@@ -33,7 +33,7 @@ export class PopupWithForm extends Popup {
     });
   }
 
-  // Публичный метод закрытия и сброса формы
+  // публичный метод закрытия и сброса формы
   close() {
     super.close();
     this._popupForm.reset();

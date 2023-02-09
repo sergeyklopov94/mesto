@@ -18,10 +18,16 @@ export class UserInfo {
   setUserInfo(userInfo) {
     this._userName.textContent = userInfo.name;
     this._userAbout.textContent = userInfo.about;
+    this._userId = userInfo._id;
   }
 
   // публичный метод для принятия нового аватара и добавления его на страницу
   setUserAvatar(userInfo) {
-    this._userAvatar.src = userInfo.link;
+    this._userAvatar.src = userInfo.avatar;
+  }
+
+  // публичный метод для получения Id пользователя
+  getUserId() {
+    return this._userId;
   }
 }
