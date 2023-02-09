@@ -133,11 +133,9 @@ const api = new Api({
   }
 });
 
-let userId;
 // вызовы методов для загрузки карточек и информации о пользователе с сервера
 Promise.all([api.getUserData(), api.getInitialCards()])
   .then(([userData, cardData]) => {
-    userId = userData._id;
     userInfo.setUserInfo(userData);
     userInfo.setUserAvatar(userData);
     cards.renderItems(cardData);
@@ -148,7 +146,7 @@ Promise.all([api.getUserData(), api.getInitialCards()])
 
   // функция создания карточки
 function renderCard(initialCard) {
-  const card = new Card(initialCard, cardTemplateSelector, userId,
+  const card = new Card(initialCard, cardTemplateSelector, userInfo.getUserId(),
     {
       handleCardClick: (image) => {
         popupWithImage.open(image);

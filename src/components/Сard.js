@@ -47,7 +47,7 @@ export class Card {
   // публичный метод класса добавления/удаления 'лайка'
   likeCard(newLikesInfo) {
     this._likes = newLikesInfo;
-    let likesCount = this._likes.length;
+    const likesCount = this._likes.length;
     if(this.checkUserLike())
       this._elementLikeButton.classList.add('element__like-button_active');
     else
